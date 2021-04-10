@@ -1,0 +1,47 @@
+/* login page */
+.login__image {
+	background-image: url("../assets/imgs/login.svg");
+	background-position: 7vw 28vh;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.login__image p {
+	max-width: 50%;
+	font-size: 25px;
+	padding-top: 25px;
+	color: #333;
+}
+
+.login__form {
+	margin-top: 50px;
+}
+
+.login__form > div {
+	margin-bottom: 20px;
+}
+
+/* register page */
+.login__avatar {
+	cursor: pointer;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	height: 125px !important;
+	width: 125px !important;
+}
+
+.login__avatar:hover {
+	background-color: #0004;
+}
+
+@media (max-width: 420px) {
+	.login__image {
+		background-position: 0 30vh;
+	}
+
+	.login__image p {
+		max-width: 90%;
+		font-size: 20px;
+		padding-top: 15px;
+	}
+}

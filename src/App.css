@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.full__height {
+	min-height: 100vh;
+}
+
+.p-5 {
+	padding: 50px;
+}
+
+.mt-5 {
+	margin-top: 50px;
+}
+
+.grey {
+	color: #333;
+}
+
+@media (max-width: 420px) {
+	.full__height {
+		min-height: 75vh;
+	}
+
+	.p-5 {
+		padding: 25px;
+	}
+
+	.mt-5 {
+		margin-top: 25px;
+	}
+}
