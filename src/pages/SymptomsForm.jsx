@@ -659,19 +659,16 @@ const SymptomsForm = () => {
         <div>
             <h1>Fill this out!</h1>
             <TextField
-                label="Number of days you had these symptoms?"
+                label="No. of days you had these symptoms?"
                 type="number"
-                InputLabelProps={{
-                    shrink: true,
-                }}
+                variant="outlined"
             />
             <TextField
                 label="Your body temprature?"
                 type="number"
-                InputLabelProps={{
-                    shrink: true,
-                }}
+                variant="outlined"
             />
+            <div className="checkbox"></div>s
         </div>
     )
 }
