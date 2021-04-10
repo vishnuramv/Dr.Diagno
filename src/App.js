@@ -5,6 +5,8 @@ import PrivateRoute from "./PrivateRoute";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
+import SymptomsForm from "./pages/SymptomsForm";
+
 
 function App() {
 	return (
@@ -15,6 +17,7 @@ function App() {
 					<Route path="/sign-up" component={SignUp} />
 					{/* Private routes => only available if logged in */}
 					<PrivateRoute exact path="/" component={Home} />
+					<PrivateRoute exact path="/symptom-form" component={SymptomsForm} />
 				</Switch>
 			</Router>
 		</>

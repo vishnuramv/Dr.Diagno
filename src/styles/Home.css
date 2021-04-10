@@ -1,0 +1,69 @@
+.home {
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+    background-color: var(--background);
+    background-image: url('../assets/imgs/bg.svg');
+    background-size: contain;
+    /* background-repeat: no-repeat; */
+    background-position: bottom;
+}
+.home__top {
+    width: 100vw;
+    height: 40vh;
+    padding: 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    color: white;
+}
+
+.home__userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home__userInfo h1 {
+    margin-left: 10px;
+}
+.home__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+}
+.home__button {
+    background-color: white !important;
+    color: var(--main-green) !important;
+}
+
+.home__buttonOut {
+    color: white !important;
+    border: 1px solid white !important;
+}
+.home__bottom {
+    margin-top: 20px;
+    min-height: 50vh;
+    width: 100vw;
+    padding: 20px;
+    background-color: white;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    text-align: center;
+}
+.home__pastDiagnosis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+}
+
+@media (max-width: 420px) {
+    .home__buttons {
+        width: fit-content;
+        flex-direction: column;
+        height: 40%;
+    }
+}
