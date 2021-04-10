@@ -39,7 +39,7 @@ const Header = () => {
 	};
 	return (
 		<>
-			<AppBar position="static" className={classes.appBar}>
+			<AppBar position="fixed" className={classes.appBar}>
 				<Toolbar className={classes.toolbar}>
 					{/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
 						<MenuIcon />
