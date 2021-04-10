@@ -12,7 +12,7 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/login" component={Login} />
-					<Route path="/signup" component={SignUp} />
+					<Route path="/sign-up" component={SignUp} />
 					{/* Private routes => only available if logged in */}
 					<PrivateRoute exact path="/" component={Home} />
 				</Switch>
