@@ -1,0 +1,111 @@
+.symptomsForm {
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    /* overflow: hidden !important; */
+    padding: 40px;
+}
+
+.symptomsForm h1 {
+    text-align: center;
+}
+
+.inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.input {
+    /* width: 100%; */
+    flex: 0.45;
+}
+
+.selectedSymptoms {
+    width: 100%;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    min-height: 100px;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.symptomsSelect {
+    width: 100%;
+    height: fit-content;
+    /* border: 1px solid darkgray; */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.symptomsSelect p {
+    background-color: rgb(230, 230, 230);
+    border-radius: 50px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.symptomsSelect p span {
+    margin-right: 5px;
+}
+
+.checkbox {
+    margin-top: 20px;
+    height: 70vh;
+    /* background-color: blue; */
+    overflow-y: hidden;
+    overflow-x: scroll;
+    display: flex;
+    padding: 20px 20px 0px 20px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.checkbox::-webkit-scrollbar {
+    display: none;
+}
+
+.checkbox .MuiFormControlLabel-label {
+    text-transform: capitalize;
+}
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+.submitButton {
+    color: white !important;
+    background-color: var(--main-green) !important;
+}
+
+@media (max-width: 420px) {
+    .inputs {
+        flex-direction: column;
+        height: 20%;
+    }
+    .input {
+        flex: 1;
+    }
+    .checkbox {
+        height: fit-content;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .submit {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+}
