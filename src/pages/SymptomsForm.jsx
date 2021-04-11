@@ -33,6 +33,11 @@ const SymptomsForm = () => {
             value: 0
         },
         {
+            name: 'acute_liver_failure',
+            lable: 'acute liver failure',
+            value: 0
+        },
+        {
             name: 'altered_sensorium',
             lable: "Altered sensorium",
             value: 0
@@ -684,21 +689,44 @@ const SymptomsForm = () => {
         symptomsCopy[index].value = 0;
         setSymptoms(symptomsCopy);
     };
+    
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
 
     const submitSymptoms = async () => {
         const encodedSymptom = symptoms.map(symptom => symptom.value)
+        const predictionDate = new Date().toDateString();
         console.log(encodedSymptom)
+//        const csrftoken = getCookie('csrftoken');
+//        console.log(csrftoken)
+
         const reqOptions = {
             method: "POST",
+//            mode: 'same-origin',
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
+//                'X-CSRFToken' : csrftoken,
             },
             // mocking the email as the username
-            body: JSON.stringify({ modelInput: encodedSymptom }),
+            body: JSON.stringify({ symptoms: encodedSymptom, predictionDate: predictionDate }),
         };
         const BASEURL = "http://localhost:8000/";
-        const response = await fetch(BASEURL + "auth/token", reqOptions);
+        const response = await fetch(BASEURL + "predict-disease/", reqOptions);
         const data = await response.json();
         console.log(data);
         history.push('/symptom-result')
