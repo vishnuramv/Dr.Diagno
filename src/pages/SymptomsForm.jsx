@@ -1,5 +1,19 @@
-import { TextField } from "@material-ui/core"
+import { Button, Checkbox, FormControlLabel, FormGroup, TextField, withStyles } from "@material-ui/core"
+import { green } from "@material-ui/core/colors";
+import { Cancel } from "@material-ui/icons";
 import { useState } from "react"
+import { useHistory } from "react-router";
+import '../styles/SymptomsForm.css'
+
+const GreenCheckbox = withStyles({
+    root: {
+        color: green[400],
+        '&$checked': {
+            color: green[600],
+        },
+    },
+    checked: {},
+})((props) => <Checkbox color="default" {...props} />);
 
 const SymptomsForm = () => {
     const [symptoms, setSymptoms] = useState([
@@ -215,7 +229,7 @@ const SymptomsForm = () => {
         },
         {
             name: 'foul_smell_of_urine',
-            lable: "foul_smell_of_urine",
+            lable: "foul smell of urine",
             value: 0
         },
         {
@@ -379,8 +393,8 @@ const SymptomsForm = () => {
             value: 0
         },
         {
-            name: 'pain in anal region',
-            lable: "",
+            name: 'pain_in_anal_region',
+            lable: "pain in anal region",
             value: 0
         },
         {
@@ -415,7 +429,7 @@ const SymptomsForm = () => {
         },
         {
             name: 'prominent_veins_on_calf',
-            lable: "prominent_veins_on_calf",
+            lable: "prominent veins on calf",
             value: 0
         },
         {
@@ -460,12 +474,12 @@ const SymptomsForm = () => {
         },
         {
             name: 'runny_nose',
-            lable: "runny_nose",
+            lable: "runny nose",
             value: 0
         },
         {
             name: 'rusty_sputum',
-            lable: "rusty_sputum",
+            lable: "rusty sputum",
             value: 0
         },
         {
@@ -653,24 +667,114 @@ const SymptomsForm = () => {
             lable: "itching",
             value: 0
         }
-    ])
+    ]);
+    const [symptomSearch, setSymptomSearch] = useState('');
+    const history = useHistory();
+
+    const handleChange = (value, symptom) => {
+        const symptomsCopy = [...symptoms];
+        const index = symptomsCopy.findIndex(currentValue => currentValue === symptom);
+        symptomsCopy[index].value = value ? 1 : 0;
+        setSymptoms(symptomsCopy);
+    };
+
+    const unselectSymptom = (symptom) => {
+        const symptomsCopy = [...symptoms];
+        const index = symptomsCopy.findIndex(currentValue => currentValue === symptom);
+        symptomsCopy[index].value = 0;
+        setSymptoms(symptomsCopy);
+    };
+
+    const submitSymptoms = async () => {
+        const encodedSymptom = symptoms.map(symptom => symptom.value)
+        console.log(encodedSymptom)
+        const reqOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            // mocking the email as the username
+            body: JSON.stringify({ modelInput: encodedSymptom }),
+        };
+        const BASEURL = "http://localhost:8000/";
+        const response = await fetch(BASEURL + "auth/token", reqOptions);
+        const data = await response.json();
+        console.log(data);
+        history.push('/symptom-result')
+    }
 
     return (
-        <div>
+        <div className="symptomsForm">
             <h1>Fill this out!</h1>
-            <TextField
-                label="No. of days you had these symptoms?"
-                type="number"
-                variant="outlined"
-            />
-            <TextField
-                label="Your body temprature?"
-                type="number"
-                variant="outlined"
-            />
-            <div className="checkbox"></div>s
+            <div className="inputs">
+                <TextField
+                    className="input"
+                    label="No. of days you had these symptoms?"
+                    variant="outlined"
+                />
+                <TextField
+                    className="input"
+                    label="Your body temprature?"
+                    variant="outlined"
+                />
+            </div>
+            <div className="selectedSymptoms">
+                <div className="symptomsSelect">
+                    {
+                        symptoms.map(symptom => symptom.value === 1 && (
+                            <p>
+                                <span>{symptom.name}</span>
+                                <Cancel style={{ color: green[600], cursor: "pointer" }} fontSize="small" onClick={() => unselectSymptom(symptom)} />
+                            </p>
+                        ))
+                    }
+                </div>
+                <TextField
+                    className="inputSymptoms"
+                    label="Search symptoms"
+                    value={symptomSearch}
+                    onChange={(e) => setSymptomSearch(e.target.value)}
+                />
+            </div>
+            <div className="checkbox">
+                <FormGroup>
+                    {
+                        symptoms?.filter((symptom) =>
+                            symptomSearch
+                                ? symptom.lable
+                                    .toLowerCase()
+                                    .includes(symptomSearch.toLowerCase())
+                                : true
+                        ).map((symptom, index) => (
+                            <FormControlLabel
+                                key={index}
+                                control={
+                                    <GreenCheckbox
+                                        checked={symptom.value === 0 ? false : true}
+                                        onChange={(e) => handleChange(e.target.checked, symptom)}
+                                        name={symptom.name}
+                                    // color="primary"
+                                    />
+                                }
+                                label={symptom.lable}
+                            />
+                        ))
+                    }
+                </FormGroup>
+            </div>
+            <div className="submit">
+                <Button
+                    className="submitButton"
+                    onClick={() => submitSymptoms()}
+                >
+                    Submit
+                </Button>
+            </div>
         </div>
     )
 }
 
 export default SymptomsForm
+
+
