@@ -8,6 +8,8 @@ import {
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { logout } from "../actions/auth";
 import HeaderLogo from "./HeaderLogo";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
+	const history = useHistory();
 	const open = Boolean(anchorEl);
 
 	const handleMenu = (event) => {
@@ -75,7 +78,15 @@ const Header = () => {
 							onClose={handleClose}
 						>
 							<MenuItem onClick={handleClose}>Profile</MenuItem>
-							<MenuItem onClick={handleClose}>Logout</MenuItem>
+							<MenuItem
+								onClick={() => {
+									logout();
+									handleClose();
+									history.push("/login");
+								}}
+							>
+								Logout
+							</MenuItem>
 						</Menu>
 					</div>
 				</Toolbar>
