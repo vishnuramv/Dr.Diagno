@@ -6,7 +6,7 @@ import {
 	ButtonGroup,
 	Avatar,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import AuthTemplate from "../components/AuthTemplate";
 import "../styles/login.css";
 import { signup } from "../actions/auth";
@@ -19,12 +19,15 @@ export default function SignUp() {
 	const [bloodGroup, setBloodGroup] = useState("");
 	const [password, setPassword] = useState("");
 	const [image, setImage] = useState(null);
-
+	const history = useHistory();
 	const imageInputRef = useRef(null);
 
 	const handleChange = () => {
 		imageInputRef.current.click();
 	};
+
+	const token = localStorage.getItem("access-token");
+	if (token) return <Redirect to="/" />;
 
 	return (
 		<AuthTemplate
@@ -110,8 +113,8 @@ export default function SignUp() {
 					/>
 					<br />
 					<Button
-						onClick={() =>
-							signup({
+						onClick={async () => {
+							await signup({
 								name,
 								email,
 								password,
@@ -119,8 +122,9 @@ export default function SignUp() {
 								gender,
 								bloodGroup,
 								image,
-							})
-						}
+							});
+							history.push("/");
+						}}
 						color="primary"
 						variant="contained"
 					>
