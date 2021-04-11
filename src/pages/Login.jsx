@@ -1,19 +1,35 @@
 import React, { useState } from "react";
-import { Typography, TextField, Button } from "@material-ui/core";
+import { Typography, TextField, Button, Divider } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import AuthTemplate from "../components/AuthTemplate";
 import "../styles/login.css";
-import { login } from "../actions/auth";
+import { googleLogin, login } from "../actions/auth";
+import GoogleLogin from "react-google-login";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	const onSuccess = (response) => {
+		console.log(response);
+		googleLogin(response.accessToken);
+	};
+	const onFailure = (error) => {
+		console.error(error);
+	};
 
 	return (
 		<AuthTemplate
 			headerText="Login to your account"
 			form={
 				<form className="login__form">
+					<GoogleLogin
+						clientId="821186524454-sou2ak19hb1ca9v5ie1qtvvk2j713vsg.apps.googleusercontent.com"
+						buttonText="Continue With Google"
+						onSuccess={onSuccess}
+						onFailure={onFailure}
+					/>
+					<Divider />
 					<TextField
 						required
 						value={email}

@@ -53,3 +53,20 @@ export const signup = async ({
 	const data = await response.json();
 	console.log(data);
 };
+
+/**
+ * google login
+ * @param accesstoken -> This is the accesstoken of the user obtained from Google
+ */
+export const googleLogin = async (accesstoken) => {
+	const reqOptions = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ access_token: accesstoken }),
+	};
+	const response = await fetch(BASEURL + "rest-auth/google/", reqOptions);
+	const data = await response.json();
+	console.log(data);
+};
