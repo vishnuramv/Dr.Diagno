@@ -1,11 +1,12 @@
 import { Avatar, Button } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { getProfile } from "../actions/auth";
+import { getProfile, refresh } from "../actions/auth";
+import { getPreviousPrediction } from "../actions/predictions";
 import Header from "../components/Header";
+import { BASEURL } from "../constant";
 import "../styles/Home.css";
 
-const BASEURL = "http://localhost:8000";
 
 export default function Home() {
 	const history = useHistory();
@@ -13,8 +14,10 @@ export default function Home() {
 
 	useEffect(() => {
 		(async () => {
+			await refresh();
 			const info = await getProfile();
 			setUserInfo(info);
+			await getPreviousPrediction();
 		})();
 	}, []);
 

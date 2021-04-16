@@ -3,6 +3,7 @@ import { green } from "@material-ui/core/colors";
 import { Cancel } from "@material-ui/icons";
 import { useState } from "react"
 import { useHistory } from "react-router";
+import { submitSymptoms } from "../actions/predictions";
 import '../styles/SymptomsForm.css'
 
 const GreenCheckbox = withStyles({
@@ -690,47 +691,23 @@ const SymptomsForm = () => {
         setSymptoms(symptomsCopy);
     };
     
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
+    // function getCookie(name) {
+    //     let cookieValue = null;
+    //     if (document.cookie && document.cookie !== '') {
+    //         const cookies = document.cookie.split(';');
+    //         for (let i = 0; i < cookies.length; i++) {
+    //             const cookie = cookies[i].trim();
+    //             // Does this cookie string begin with the name we want?
+    //             if (cookie.substring(0, name.length + 1) === (name + '=')) {
+    //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return cookieValue;
+    // }
 
 
-    const submitSymptoms = async () => {
-        const encodedSymptom = symptoms.map(symptom => symptom.value)
-        const predictionDate = new Date().toDateString();
-        console.log(encodedSymptom)
-//        const csrftoken = getCookie('csrftoken');
-//        console.log(csrftoken)
-
-        const reqOptions = {
-            method: "POST",
-//            mode: 'same-origin',
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-//                'X-CSRFToken' : csrftoken,
-            },
-            // mocking the email as the username
-            body: JSON.stringify({ symptoms: encodedSymptom, predictionDate: predictionDate }),
-        };
-        const BASEURL = "http://localhost:8000/";
-        const response = await fetch(BASEURL + "predict-disease/", reqOptions);
-        const data = await response.json();
-        console.log(data);
-        history.push('/symptom-result')
-    }
 
     return (
         <div className="symptomsForm">
@@ -794,7 +771,10 @@ const SymptomsForm = () => {
             <div className="submit">
                 <Button
                     className="submitButton"
-                    onClick={() => submitSymptoms()}
+                    onClick={async () => {
+                        const predictedDisease = await submitSymptoms(symptoms)
+                        history.push('/symptom-result', { predictedDisease: predictedDisease })
+                    }}
                 >
                     Submit
                 </Button>

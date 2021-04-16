@@ -1,4 +1,4 @@
-const BASEURL = "http://localhost:8000/";
+import { BASEURL } from "../constant";
 
 /**
  * login user
@@ -15,10 +15,11 @@ export const login = async (email, password) => {
 		// mocking the email as the username
 		body: JSON.stringify({ username: email, password }),
 	};
-	const response = await fetch(BASEURL + "auth/token/", reqOptions);
+	const response = await fetch(BASEURL + "/auth/token/", reqOptions);
 	const data = await response.json();
 	console.log(data);
 	localStorage.setItem("access-token", data.access);
+	localStorage.setItem("refresh-token", data.refresh);
 };
 
 /**
@@ -53,7 +54,7 @@ export const signup = async ({
 		},
 		body: formData,
 	};
-	const response = await fetch(BASEURL + "auth/register/", reqOptions);
+	const response = await fetch(BASEURL + "/auth/register/", reqOptions);
 	const data = await response.json();
 	console.log(data);
 	await login(email, password);
@@ -72,7 +73,7 @@ export const googleLogin = async (accesstoken) => {
 		body: JSON.stringify({ access_token: accesstoken }),
 	};
 	const response = await fetch(
-		BASEURL + "auth/rest-auth/google/",
+		BASEURL + "/auth/rest-auth/google/",
 		reqOptions
 	);
 	const data = await response.json();
@@ -93,7 +94,7 @@ export const getProfile = async () => {
 				Accept: "application/json",
 			},
 		};
-		const response = await fetch(BASEURL + "auth/me", reqOptions);
+		const response = await fetch(BASEURL + "/auth/me", reqOptions);
 		const data = await response.json();
 		return data;
 	}
@@ -102,3 +103,23 @@ export const getProfile = async () => {
 export const logout = () => {
 	localStorage.removeItem("access-token");
 };
+
+
+export const refresh = async () => {
+	const token = localStorage.getItem("refresh-token");
+	if (token) {
+		const reqOptions = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ refresh: token }),
+		};
+		const response = await fetch(
+			BASEURL + "/auth/token/refresh",
+			reqOptions
+		);
+		const data = await response.json();
+		localStorage.setItem("access-token", data.access);
+	}
+}

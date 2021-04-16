@@ -19,7 +19,7 @@ function App() {
 					{/* Private routes => only available if logged in */}
 					<PrivateRoute exact path="/" component={Home} />
 					<PrivateRoute exact path="/symptom-form" component={SymptomsForm} />
-					<PrivateRoute exact path="/symptom-form" component={SymptomResult} />
+					<PrivateRoute exact path="/symptom-result" component={SymptomResult} />
 				</Switch>
 			</Router>
 		</>
