@@ -1,3 +1,4 @@
+import { Card } from "@material-ui/core";
 import Chart from "../components/Chart";
 import "../styles/SymptomResult.css";
 const SymptomResult = ({ location }) => {
