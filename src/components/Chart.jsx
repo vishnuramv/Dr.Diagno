@@ -1,21 +1,13 @@
 // import { Doughnut } from '@reactchartjs/react-chart.js'
-import { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
-import { getTopDisease } from "../helper";
 
 const Chart = ({ predictedDisease }) => {
-  const [topDisease, setTopDisease] = useState({});
-
-  useEffect(() => {
-    const disease = getTopDisease(predictedDisease);
-    setTopDisease(disease);
-  }, [predictedDisease]);
   const data = {
-    labels: Object.keys(topDisease),
+    labels: Object.keys(predictedDisease),
     datasets: [
       {
         label: "# of Diseases",
-        data: Object.values(topDisease),
+        data: Object.values(predictedDisease),
         backgroundColor: [
           "rgba(255, 99, 132, 0.5)",
           "rgba(54, 162, 235, 0.5)",
