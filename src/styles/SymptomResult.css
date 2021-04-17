@@ -3,18 +3,25 @@
   height: 100vh;
   width: 100vw;
   background-color: var(--background);
+  /* background: rgb(197, 197, 197); */
 }
 
 .result__container {
   width: 100%;
   height: 60%;
   background-color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,.5);
 }
 .result__graphContainer {
-  background-color: #fff;
-  margin-top: 50px;
+  margin-top: 30px;
   width: 50%;
-  height: 60%;
+  height: 70%;
   display: flex;
   justify-content: center;
   font-size: 30px !important;
