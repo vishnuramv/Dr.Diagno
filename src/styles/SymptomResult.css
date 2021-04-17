@@ -1,16 +1,26 @@
 .result {
-    padding: 20px;
-    background-color: rgb(82, 82, 82);
-    height: 100vh;
-    width: 100vw;
+  padding: 20px;
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
 }
 .result__graphContainer {
-    background-color: white;
-    width: 300pc;
-    height: 400px;
+  background-color: #fff;
+  margin-top: 50px;
+  width: 50%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  font-size: 30px !important;
 }
-
+/* 
 .result__graphContainer canvas {
-    height: 300px !important;
-    width: 700px !important;
+  height: 100% !important;
+  width: 50% !important;
+} */
+
+@media (max-width: 420px) {
+  .result__graphContainer {
+    width: 100%;
+  }
 }
