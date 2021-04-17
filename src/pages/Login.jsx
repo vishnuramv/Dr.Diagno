@@ -3,22 +3,12 @@ import { Typography, TextField, Button, Divider } from "@material-ui/core";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import AuthTemplate from "../components/AuthTemplate";
 import "../styles/login.css";
-import { googleLogin, login } from "../actions/auth";
-import GoogleLogin from "react-google-login";
+import { login } from "../actions/auth";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const history = useHistory();
-
-	const onSuccess = (response) => {
-		console.log(response);
-		googleLogin(response.accessToken);
-	};
-	const onFailure = (error) => {
-		console.error(error);
-	};
-
 	const token = localStorage.getItem("access-token");
 	if (token) return <Redirect to="/" />;
 

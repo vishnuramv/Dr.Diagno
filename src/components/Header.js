@@ -7,7 +7,6 @@ import {
 	MenuItem,
 	Toolbar,
 } from "@material-ui/core";
-import { AccountCircle } from "@material-ui/icons";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { logout } from "../actions/auth";
