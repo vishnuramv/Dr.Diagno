@@ -14,6 +14,7 @@ export const getPreviousPrediction = async () => {
     const response = await fetch(BASEURL + "/predict-disease/", reqOptions);
     const data = await response.json();
     console.log(data);
+    return data.previousPredictions
 }
 
 export const submitSymptoms = async (symptoms) => {

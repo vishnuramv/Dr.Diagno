@@ -36,8 +36,6 @@ const SymptomsForm = () => {
         setSymptoms(symptomsCopy);
     };
 
-
-
     return (
         <div className="symptomsForm">
             <h1>Fill this out!</h1>
@@ -56,8 +54,8 @@ const SymptomsForm = () => {
             <div className="selectedSymptoms">
                 <div className="symptomsSelect">
                     {
-                        symptoms.map(symptom => symptom.value === 1 && (
-                            <p>
+                        symptoms.map((symptom, index) => symptom.value === 1 && (
+                            <p key={index}>
                                 <span>{symptom.name}</span>
                                 <Cancel style={{ color: green[600], cursor: "pointer" }} fontSize="small" onClick={() => unselectSymptom(symptom)} />
                             </p>

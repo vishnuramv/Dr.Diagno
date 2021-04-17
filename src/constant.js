@@ -724,7 +724,7 @@ export const diseaseDescription = {
         "description": "Peptic ulcer disease (PUD) is a break in the inner lining of the stomach, the first part of the small intestine, or sometimes the lower esophagus. An ulcer in the stomach is called a gastric ulcer, while one in the first part of the intestines is a duodenal ulcer",
         "precaution": ["avoid fatty spicy food", "consume probiotic food", "eliminate milk", "limit alcohol"],
     },
-    "Dimorphic hemorrhoids(piles)": {
+    "Dimorphic hemmorhoids(piles)": {
         "description": "Hemorrhoids, also spelled haemorrhoids, are vascular structures in the anal canal. In their ... Other names, Haemorrhoids, piles, hemorrhoidal disease ",
         "precaution": ["avoid fatty spicy food ", "consume witch hazel", "warm bath with epsom salt", "consume alovera juice"],
     },

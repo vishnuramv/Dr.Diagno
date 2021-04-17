@@ -1,6 +1,6 @@
 .result {
   padding: 20px;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: var(--background);
   /* background: rgb(197, 197, 197); */
@@ -8,7 +8,7 @@
 
 .result__container {
   width: 100%;
-  height: 60%;
+  height: 60vh;
   background-color: white;
   text-align: center;
   display: flex;
@@ -17,6 +17,8 @@
   flex-direction: column;
   border-radius: 20px;
   box-shadow: 0 10px 20px 0 rgba(0,0,0,.5);
+  padding: 20px 0px;
+  /* font-family: 'Montserrat', sans-serif; */
 }
 .result__graphContainer {
   margin-top: 30px;
@@ -32,8 +34,85 @@
   width: 50% !important;
 } */
 
+.result__diseaseContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.result__diseaseCard {
+  margin-top: 30px;
+  background-color: white;
+  width: 350px;
+  height: 450px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,.5);
+}
+.result__diseaseCard h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.result__diseaseCard h4 {
+  margin: 10px 0 8px 0;
+  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Comfortaa', cursive; */
+  font-weight: 600;
+  letter-spacing: 1px;
+  /* margin-top: 10px; */
+}
+.result__diseaseCard p {
+  font-family: 'Comfortaa', cursive;
+  /* font-weight: 300; */
+  line-height: 1.3rem;
+}
+.result__precaution {
+  text-transform: capitalize;
+}
+
+.result__diseaseCard:nth-child(4) {
+  margin-left: 0px;
+}
+.result__diseaseCard:nth-child(5) {
+  margin-left: -200px;
+}
+
+.result__button {
+  background-color: white;
+  border: 3px solid #1E9437;
+  outline: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Comfortaa', cursive; */
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 18px;
+  color: #1E9437 !important;
+}
+
 @media (max-width: 420px) {
+  .result__container {
+    height: 30vh;
+  }
   .result__graphContainer {
     width: 100%;
+  }
+  .result__diseaseCard {
+    height: fit-content;
+  }
+  .result__diseaseCard:nth-child(4) {
+    margin-left: 0px;
+  }
+  .result__diseaseCard:nth-child(5) {
+    margin-left: 0px;
   }
 }

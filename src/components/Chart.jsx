@@ -29,7 +29,7 @@ const Chart = ({ predictedDisease }) => {
   const options = {
     legend: {
       display: true,
-      position: window.innerWidth > 420 ? "right" : "top",
+      position: window.innerWidth > 420 ? "right" : "bottom",
     },
     tooltips: {
       callbacks: {
