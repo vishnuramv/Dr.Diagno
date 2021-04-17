@@ -23,7 +23,7 @@ export default function Home() {
 
 	return (
 		<div className="home">
-			<Header />
+			<Header imgURL={BASEURL + userInfo.profile_pic} username={userInfo.username} />
 			<div className="home__top">
 				<div className="home__userInfo">
 					<Avatar src={BASEURL + userInfo.profile_pic} />

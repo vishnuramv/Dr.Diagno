@@ -1,5 +1,6 @@
 import {
 	AppBar,
+	Avatar,
 	IconButton,
 	makeStyles,
 	Menu,
@@ -25,9 +26,13 @@ const useStyles = makeStyles((theme) => ({
 	icon: {
 		color: "green",
 	},
+	small: {
+		width: theme.spacing(3),
+		height: theme.spacing(3),
+	},
 }));
 
-const Header = () => {
+const Header = ({ imgURL, username }) => {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const history = useHistory();
@@ -60,7 +65,8 @@ const Header = () => {
 							color="inherit"
 							className={classes.icon}
 						>
-							<AccountCircle />
+							<Avatar src={imgURL} className={classes.small} alt={username} />
+							{/* <AccountCircle /> */}
 						</IconButton>
 						<Menu
 							id="menu-appbar"

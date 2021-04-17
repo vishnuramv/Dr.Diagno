@@ -1,14 +1,12 @@
-// import { useEffect } from "react"
 import Chart from '../components/Chart'
+import '../styles/SymptomResult.css'
 const SymptomResult = ({ location }) => {
-    // useEffect(() => {
-    // }, [location])
-    console.log("object");
-    console.log(location.state.predictedDisease);
     return (
         <div className="result">
             <h1>Predition Results</h1>
-            <Chart predictedDisease={location.state.predictedDisease} />
+            <div className="result__graphContainer">
+                <Chart predictedDisease={location.state.predictedDisease} />
+            </div>
         </div>
     )
 }
