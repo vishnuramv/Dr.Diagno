@@ -139,10 +139,9 @@ export default function SignUp() {
 			}
 			imageText={
 				<>
-					<Typography variant="h4">Lorem, ipsum dolor.</Typography>
+					{/* <Typography variant="h4">Lorem, ipsum dolor.</Typography> */}
 					<p>
-						Good health is not something we can buy. However, it can
-						be an extremely valuable savings account.
+						Health is a state of complete harmony of the body, mind and spirit. When one is free from physical disabilities and mental distractions, the gates of the soul open.
 					</p>
 				</>
 			}
