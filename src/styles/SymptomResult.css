@@ -2,16 +2,22 @@
   padding: 20px;
   height: 100vh;
   width: 100vw;
-  background-color: red;
+  background-color: var(--background);
 }
+.result > div {
+  height: 60%;
+  width: 100%;
+  background-color: #fff;
+}
+
 .result__graphContainer {
   background-color: #fff;
-  margin-top: 50px;
   width: 50%;
   height: 60%;
   display: flex;
   justify-content: center;
   font-size: 30px !important;
+  position: relative;
 }
 /* 
 .result__graphContainer canvas {

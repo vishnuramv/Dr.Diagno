@@ -52,7 +52,7 @@ const Chart = ({ predictedDisease }) => {
     responsive: true,
     maintainAspectRatio: false,
   };
-  return <Pie data={data} options={options} height={100} width={50} />;
+  return <Pie data={data} options={options} height={120} width={50} />;
 };
 
 export default Chart;
