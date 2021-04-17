@@ -11,6 +11,6 @@
 }
 
 .result__graphContainer canvas {
-    height: 300px !important;
-    width: 700px !important;
+    height: 50% !important;
+    width: 50% !important;
 }

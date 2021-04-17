@@ -50,9 +50,10 @@ const Chart = ({ predictedDisease }) => {
                 },
             },
         },
+        responsive: true,
     };
     return (
-        <Doughnut data={data} options={options} width={500} height={100} />
+        <Doughnut data={data} options={options} width={"100%"} height={"100%"} />
     )
 }
 
