@@ -716,7 +716,7 @@ export const diseaseDescription = {
         "description": "Impetigo (im-puh-TIE-go) is a common and highly contagious skin infection that mainly affects infants and children. Impetigo usually appears as red sores on the face, especially around a child's nose and mouth, and on hands and feet. The sores burst and develop honey-colored crusts",
         "precaution": ["soak affected area in warm water", "use antibiotics", "remove scabs with wet compressed cloth", "consult doctor"],
     },
-    "Hypertension": {
+    "Hypertension ": {
         "description": "Hypertension (HTN or HT), also known as high blood pressure (HBP), is a long-term medical condition in which the blood pressure in the arteries is persistently elevated. High blood pressure typically does not cause symptoms.",
         "precaution": ["meditation", "salt baths", "reduce stress", "get proper sleep"],
     },
