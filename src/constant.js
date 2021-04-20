@@ -684,7 +684,7 @@ export const diseaseDescription = {
         "description": "Gastroesophageal reflux disease, or GERD, is a digestive disorder that affects the lower esophageal sphincter (LES), the ring of muscle between the esophagus and stomach. Many people, including pregnant women, suffer from heartburn or acid indigestion caused by GERD.",
         "precaution": ["avoid fatty spicy food", "avoid lying down after eating", "maintain healthy weight", "exercise"],
     },
-    "Chronic cholestasic": {
+    "Chronic cholestasis": {
         "description": "Chronic cholestatic diseases, whether occurring in infancy, childhood or adulthood, are characterized by defective bile acid transport from the liver to the intestine, which is caused by primary damage to the biliary epithelium in most cases",
         "precaution": ["cold baths", "anti itch medicine", "consult doctor", "eat healthy"],
     },
@@ -708,7 +708,7 @@ export const diseaseDescription = {
         "description": "Acne vulgaris is the formation of comedones, papules, pustules, nodules, and/or cysts as a result of obstruction and inflammation of pilosebaceous units (hair follicles and their accompanying sebaceous gland). Acne develops on the face and upper trunk. It most often affects adolescents",
         "precaution": ["bath twice", "avoid fatty spicy food", "drink plenty of water", "avoid too many products"],
     },
-    "Diabetes": {
+    "Diabetes ": {
         "description": "Diabetes is a disease that occurs when your blood glucose, also called blood sugar, is too high. Blood glucose is your main source of energy and comes from the food you eat. Insulin, a hormone made by the pancreas, helps glucose from food get into your cells to be used for energy",
         "precaution": ["have balanced diet", "exercise", "consult doctor", "follow up"],
     },
